@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "start": "node ./node_modules/nodemon/bin/nodemon.js ./bin/www.js",
-    "postinstall": "cd front && npm install && npm run build"
+    "postinstall": "cd front && npm install && npm run build",
+    "importdata": "mongoimport -d CABallotDonations -c propositions --file ./data/propositions.json --drop"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",

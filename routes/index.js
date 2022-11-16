@@ -3,19 +3,18 @@ const router = express.Router();
 
 import { myDB } from "../db/MyMongoDB.js";
 
-/* GET home page. */
-router.get("/getDonations", async function (req, res, next) {
+router.get("/getPropositions", async function (req, res, next) {
   console.log("get data");
 
-  let donations;
+  let propositions;
 
   try {
-    donations = await myDB.getDonations();
-    res.status(200).json({ donations, msg: "Query successful" });
+    propositions = await myDB.getPropositions();
+    res.status(200).json({ propositions, msg: "Query successful" });
   } catch (e) {
     console.log("Error in db", e);
     res.status(300).json({
-      donations: [],
+      propositions: [],
       msg: "Error in the query",
       error: true,
       errorObj: JSON.stringify(e),
