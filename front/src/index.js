@@ -1,13 +1,33 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import reportWebVitals from "./reportWebVitals";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
+
+import IndexPage from "./pages/IndexPage.js";
+import AboutPage from "./pages/AboutPage.js";
+import ErrorPage from "./pages/ErrorPage.js";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <IndexPage></IndexPage>,
+    errorElement: <ErrorPage></ErrorPage>,
+  },
+  {
+    path: "/about",
+    element: <AboutPage></AboutPage>,
+  },
+]);
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 

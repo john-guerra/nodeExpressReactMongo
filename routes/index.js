@@ -1,10 +1,26 @@
-var express = require("express");
-var router = express.Router();
+import express from "express";
+const router = express.Router();
+
+import { myDB } from "../db/MyMongoDB.js";
 
 /* GET home page. */
-router.get("/getData", function (req, res, next) {
+router.get("/getDonations", async function (req, res, next) {
   console.log("get data");
-  res.json([1, 2, 3, 4]);
+
+  let donations;
+
+  try {
+    donations = await myDB.getDonations();
+    res.status(200).json({ donations, msg: "Query successful" });
+  } catch (e) {
+    console.log("Error in db", e);
+    res.status(300).json({
+      donations: [],
+      msg: "Error in the query",
+      error: true,
+      errorObj: JSON.stringify(e),
+    });
+  }
 });
 
-module.exports = router;
+export default router;

@@ -2,9 +2,10 @@
   "name": "ca-ballot-moneyv3",
   "version": "0.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "start": "node ./node_modules/nodemon/bin/nodemon.js ./bin/www",
-    "post-install": "cd front && npm instal && npm run build"
+    "start": "node ./node_modules/nodemon/bin/nodemon.js ./bin/www.js",
+    "postinstall": "cd front && npm install && npm run build"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -13,6 +14,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-react": "^7.31.10",
     "express": "~4.16.1",
+    "mongodb": "^4.11.0",
     "morgan": "~1.9.1",
     "nodemon": "^2.0.20",
     "prettier": "^2.7.1"
