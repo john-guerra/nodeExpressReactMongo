@@ -22,4 +22,18 @@ router.get("/getPropositions", async function (req, res, next) {
   }
 });
 
+router.post("/createComment", async (req, res) => {
+  console.log("create Comment", req.body);
+  const newCommentObj = req.body;
+  console.log("create comment new obj", newCommentObj);
+
+  // create in the database!
+  const mongoResponse = await myDB.createComment(
+    newCommentObj.proposition_id,
+    newCommentObj
+  );
+
+  res.status(200).json({ msg: "Comment created", status: "ok", mongoResponse });
+});
+
 export default router;

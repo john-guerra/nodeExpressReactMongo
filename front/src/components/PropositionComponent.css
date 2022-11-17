@@ -1,0 +1,13 @@
+.PropositionComponent {
+  border: solid 1px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  padding: 5px;
+  box-shadow: 2px 2px 2px #aaa;
+}
+
+.PropositionComponent .name {
+  margin: 20px;
+  font-weight: bold;
+  font-size: 120%;
+}

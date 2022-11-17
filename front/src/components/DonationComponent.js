@@ -8,7 +8,7 @@ function DonationComponent({ donation }) {
       className="DonationComponent"
       style={{
         border: "solid 1px",
-        maxWidth: "10px",
+        maxWidth: "20px",
         display: "inline-block",
         overflow: "hidden",
         height: "20px",
