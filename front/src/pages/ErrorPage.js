@@ -7,7 +7,11 @@ function ErrorPage() {
   return (
     <BasePage>
       <div>
-        <h1>John's not funny anymore 💔</h1>
+        <h1>
+          Error 404:
+          <br />
+          <small>John's not funny anymore 💔</small>
+        </h1>
       </div>
     </BasePage>
   );
