@@ -22,6 +22,27 @@ router.get("/getPropositions", async function (req, res, next) {
   }
 });
 
+router.get("/getDonations", async function (req, res, next) {
+  console.log("get data", req.query);
+
+  const { page, query } = req.query;
+
+  let donations;
+
+  try {
+    donations = await myDB.getDonations({ query, page });
+    res.status(200).json({ donations, msg: "Query successful" });
+  } catch (e) {
+    console.log("Error in db", e);
+    res.status(300).json({
+      donations: [],
+      msg: "Error in the query",
+      error: true,
+      errorObj: JSON.stringify(e),
+    });
+  }
+});
+
 router.post("/createComment", async (req, res) => {
   console.log("create Comment", req.body);
   const newCommentObj = req.body;

@@ -10,6 +10,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 import IndexPage from "./pages/IndexPage.js";
 import AboutPage from "./pages/AboutPage.js";
+import DonationsPage from "./pages/DonationsPage.js";
 import ErrorPage from "./pages/ErrorPage.js";
 
 const router = createBrowserRouter([
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
   {
     path: "/about",
     element: <AboutPage></AboutPage>,
+  },
+  {
+    path: "/donations",
+    element: <DonationsPage></DonationsPage>,
   },
 ]);
 

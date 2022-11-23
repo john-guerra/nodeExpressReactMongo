@@ -7,7 +7,7 @@ import DonationsStack from "./DonationsStack.js";
 
 import PropositionCommentForm from "./PropositionCommentForm.js";
 
-function PropositionComponent({ proposition, reloadData }) {
+function PropositionComponent({ proposition, reloadData, amountRatio }) {
   const [showCommentForm, setShowCommentForm] = useState(false);
 
   async function onCreateComment(name, comment) {
@@ -33,7 +33,7 @@ function PropositionComponent({ proposition, reloadData }) {
     await reloadData();
   }
 
-  console.log("PropositionComponent render", proposition, showCommentForm);
+  // console.log("PropositionComponent render", proposition, showCommentForm);
   return (
     <div className="PropositionComponent">
       <span>
@@ -42,6 +42,7 @@ function PropositionComponent({ proposition, reloadData }) {
           donations={proposition.donations.filter(
             (d) => d.position !== "SUPPORTED"
           )}
+          amountRatio={amountRatio}
         ></DonationsStack>
       </span>
       <span className="name">{proposition.name}</span>
@@ -51,6 +52,7 @@ function PropositionComponent({ proposition, reloadData }) {
           donations={proposition.donations.filter(
             (d) => d.position === "SUPPORTED"
           )}
+          amountRatio={amountRatio}
         ></DonationsStack>
       </span>
       <div>
@@ -73,8 +75,8 @@ function PropositionComponent({ proposition, reloadData }) {
 
       <div>
         {proposition.comments !== undefined
-          ? proposition.comments.map((c) => (
-              <div>
+          ? proposition.comments.map((c, i) => (
+              <div key={`prop_${proposition._id}_comment_${i}`}>
                 {new Date(c.timestamp).toISOString()} {c.name}: {c.comment}
               </div>
             ))
@@ -87,6 +89,7 @@ function PropositionComponent({ proposition, reloadData }) {
 PropositionComponent.propTypes = {
   proposition: PropTypes.object.isRequired,
   reloadData: PropTypes.func.isRequired,
+  amountRatio: PropTypes.number.isRequired,
 };
 
 export default PropositionComponent;

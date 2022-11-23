@@ -1,0 +1,6 @@
+.DonationComponent {
+  border: solid 0.1px #ccc;
+  display: inline-block;
+  overflow: hidden;
+  height: 20px;
+}
